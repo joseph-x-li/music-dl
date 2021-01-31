@@ -6,11 +6,6 @@ read playlisturl
 echo "Enter in the name of the playlist (typically Music ##):"
 read albumname
 
-if [ -d "dltmp" ]
-then 
-    rm -rf dltmp
-fi 
-
 mkdir -p downloads
 cd downloads
 
