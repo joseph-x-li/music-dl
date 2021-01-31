@@ -22,8 +22,10 @@ youtube-dl --format "bestaudio[ext=m4a]"\
     --postprocessor-args "-metadata artist=Youtube -metadata album=\"$albumname\""\
     --embed-thumbnail $playlisturl
 
-mv ./* .. && cd .. 
-rmdir dltmp && cd ../$albumname
+mv ./* .. # move out of dltmp
+cd .. # exit dltmp
+rmdir dltmp # remove dltmp (now empty)
+cd "$albumname" # open new album
 
 # Import into Apple's magical music ecosystem and sync with phone.
 open -a Music.app *
