@@ -16,7 +16,7 @@ cd downloads
 if [ ! -d "$playlistid" ]; then
     echo "Playlist is fresh; dry-running youtube-dl for 3 seconds to get playlist name..."
     timeout 3s youtube-dl --format "bestaudio[ext=m4a]"\
-        -o "%(playlist_id)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"\
+        -o "%(playlist_id)s/%(playlist_title)s/%(title)s.%(ext)s"\
         --add-metadata\
         --postprocessor-args "-metadata album=%(playlist_title)s"\
         --embed-thumbnail\
@@ -37,7 +37,7 @@ cd ..
 
 # We now know the playlist title!!!!
 youtube-dl --format "bestaudio[ext=m4a]"\
-    -o "%(playlist_id)s/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"\
+    -o "%(playlist_id)s/%(playlist_title)s/%(title)s.%(ext)s"\
     --add-metadata\
     --postprocessor-args "-metadata album=\"$playlistname\""\
     --embed-thumbnail\
