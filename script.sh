@@ -18,11 +18,15 @@ if [ ! -d "$playlistid" ]; then
     timeout 3s youtube-dl --format "bestaudio[ext=m4a]"\
         -o "%(playlist_id)s/%(playlist_title)s/%(title)s.%(ext)s"\
         --add-metadata\
-        --postprocessor-args "-metadata album=%(playlist_title)s"\
+        --postprocessor-args "-metadata artist=Youtube -metadata album=\"$playlistname\""\
         --embed-thumbnail\
         $playlisturl > /dev/null
     echo "Done."
 fi
+
+echo "Downloads Structure"
+
+tree -L 2
 
 # cd into playlistid folder
 cd $playlistid
@@ -39,7 +43,7 @@ cd ..
 youtube-dl --format "bestaudio[ext=m4a]"\
     -o "%(playlist_id)s/%(playlist_title)s/%(title)s.%(ext)s"\
     --add-metadata\
-    --postprocessor-args "-metadata album=\"$playlistname\""\
+    --postprocessor-args "-metadata artist=Youtube -metadata album=\"$playlistname\""\
     --embed-thumbnail\
     $playlisturl
 
